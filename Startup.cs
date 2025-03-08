@@ -1,5 +1,8 @@
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
- {
-    app.UseCookiePolicy();
-    app.UseMvc();
- }
+public void ConfigureServices(IServiceCollection services)
+{
+   services.Configure<CookiePolicyOptions>(options =>
+   {
+     options.CheckConsentNeeded = context => true;
+      options.MinimumSameSitePolicy = SameSiteMode.None; 
+   }); 
+} 
